@@ -1,12 +1,34 @@
 from LFTC.symb_table import SymbolTable
 import re, sys
 
-separator = ['(', ')', '[', ']', '{', '}', ' ', ';']
-operator = ['+', '-', '/', '*', '=', '<=', '>=', '>', '<', '==', '!=', '->', '%']
-reserved_words = ['big_numbers', 'many_letters', 'long_things', 'loop', 'assuming', 'otherwise', 'show', 'input', 'accurate', 'erroneous', 'if', 'else']
+
+def setup_lexix():
+    with open('lexic.in', 'r') as file:
+        content = file.read()
+        words = content.split(' ')
+
+    op = False
+    sep = False
+    for word in words:
+        if not op:
+            if word == "%":
+                op = True
+            operator.append(word)
+        elif not sep:
+            if word == 'space':
+                sep = True
+                separator.append(' ')
+            else:
+                separator.append(word)
+        else:
+            reserved_words.append(word)
+
 
 PIF = []
 st = SymbolTable(size=5)
+separator = []
+operator = []
+reserved_words = []
 
 
 def is_valid_identifier(input_string):
@@ -25,7 +47,7 @@ def is_valid_number(input_string):
 
 
 def check_lexical():
-    with open('p3err.txt', 'r') as file:
+    with open('input.txt', 'r') as file:
         my_word = ''
         line_nr = 1
         char_nr = 0
@@ -153,13 +175,14 @@ def check_lexical():
 
 
 if __name__ == "__main__":
+    setup_lexix()
     try:
-        with open("p3_err_out.txt", "w") as file:
+        with open("p1_out.txt", "w") as file:
             check_lexical()
             print(f"the PIF: {PIF}", file=file)
             print(f"the ST: {st}", file=file)
     except Exception as e:
-        with open("p3_err_out.txt", "a") as file:
+        with open("p1_out.txt", "a") as file:
             print(e, file=file)
 
 
