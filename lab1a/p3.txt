@@ -1,0 +1,19 @@
+big_numbers-> n;
+big_numbers-> sum = 0;
+long_things<big_numbers>-> arr;
+
+n = input();
+
+big_numbers-> i = 0;
+loop-> (i <n){
+    arr[i] = input();
+    i = i + 1;
+}
+
+i = 0;
+loop-> (i <n){
+    sum = sum + arr[i];
+    i = i + 1;
+}
+
+show('the sum is: '); show(sum)

@@ -1,0 +1,11 @@
+long_things<big_numbers>-> arr;
+big_numbers-> max_number = 0;
+big_numbers-> i = 0;
+loop -> (i < 5) {
+    assuming (max_number < arr[i]) {
+            max_number = arr[i];
+        }
+    }
+    i = i + 1;
+}
+show(max_number);

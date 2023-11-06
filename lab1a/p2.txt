@@ -1,0 +1,14 @@
+big_numbers-> my_number = 53;
+big_numbers-> is_prime = 0;
+big_numbers-> i = 2;
+
+loop-> (i <= my_number){
+    assuming (my_number % i == 0){
+        is_prime = 1;
+        show('Its not a prime number');
+    }
+    i = i + 1;
+}
+assuming (is_prime == 0){
+    show('its a prime number')
+}

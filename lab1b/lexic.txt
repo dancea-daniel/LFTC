@@ -1,0 +1,36 @@
+Data types: 
+big_numbers (int), many_letters (string)
+
+
+Alphabet:
+a. Upper (A-Z) and lower case letters (a-z) of the English alphabet
+
+b. Underline character '_', '>' '=', '<', '!'
+
+c. Decimal digits (0-9)
+
+
+
+1. Lexic:
+a) special symbols, representing: 
+	-operators: + - / * = <= >= > < == != ->
+	-separators: () [] {} ; space
+	-reserved words: big_numbers many_letters long_things loop assuming otherwise show input accurate erroneous
+b) identifiers: 
+	-a sequence of letters and  digits, such that the first character is a lowercase letter; the rule is:
+	
+	identifier := lowercase_letter{allowed_characters}
+	lowercase_letter := "a" | "b" | ... | "z"
+	allowed_characters := "a" | "b" | ... | "z" | "A" | "B" | ... | "Z" | "0" | "1" |...| "9" | "_"
+	
+c) constants:
+	1.big_numbers - rule:
+
+	noconst:= "+"no | "-"no | no
+	digit := "0" | "1" | ... | "9"
+	no:= digit{no}
+
+	2. many_letters - rule
+
+	constchar:= "string"
+	string:=allowed_characters{string}

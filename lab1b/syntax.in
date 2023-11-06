@@ -1,0 +1,28 @@
+Syntax: 
+program := "In the begining there was " decllist ";" cmpdstmt "that is all folks"
+
+decllist := declaration | declaration ";" decllist
+declaration := normal_type "->" IDENTIFIER | normal_type "->" assignstmt | arraydecl
+arraydecl := "long_things""<" normal_type ">""->" IDENTIFIER 
+normal_type := "big_numbers" | "many_letters"
+
+cmpdstmt := "{" stmtlist "}"
+stmtlist := stmt | stmt ";" stmtlist
+stmt := simplestmt | structstmt
+simplestmt := assignstmt | iostmt
+
+assignstmt := IDENTIFIER "=" expression
+expression := term ("+"term)* | term ("-"term)*
+term := factor ("*" factor)* | factor ("\" factor)*
+factor := "(" expression ")" | IDENTIFIER
+
+iostmts := "show" | "input" "(" IDENTIFIER ")"
+
+structstms := ifstmt | loopstmt
+ifstmt := "assuming" "->""(" condition ")" cmpdstmt ["otherwise" cmpdstmt]
+loopstmt := loop "->""(" condition ")" cmpdstmt
+
+condition := expression RELATION expression | condition_true | condition_false
+condition_true := expression "=" "accurate"
+condition_false := expression "=" "erroneous"
+RELATION ::= "<" | "<=" | "==" | "!=" | ">=" | ">"
