@@ -1,9 +1,9 @@
 from LFTC.symb_table import SymbolTable
 import re, sys
-
+from finite_automata import FiniteAutomaton
 
 def setup_lexix():
-    with open('lexic.in', 'r') as file:
+    with open('lab1b/lexic.in', 'r') as file:
         content = file.read()
         words = content.split(' ')
 
@@ -32,8 +32,9 @@ reserved_words = []
 
 
 def is_valid_identifier(input_string):
-    pattern = r'^[a-z][a-zA-Z_1-9]*$'
-    return bool(re.match(pattern, input_string))
+    fa = FiniteAutomaton()
+    fa.read_from_file("fa.txt")
+    return fa.verify_sequence(input_string)
 
 
 def is_valid_string(input_string):
@@ -42,12 +43,13 @@ def is_valid_string(input_string):
 
 
 def is_valid_number(input_string):
-    pattern = r'^[+-]?\d+?$'
-    return bool(re.match(pattern, input_string))
+    fa = FiniteAutomaton()
+    fa.read_from_file("fa1.txt")
+    return fa.verify_sequence(input_string)
 
 
 def check_lexical():
-    with open('input.txt', 'r') as file:
+    with open('lab1a/p1.txt', 'r') as file:
         my_word = ''
         line_nr = 1
         char_nr = 0
