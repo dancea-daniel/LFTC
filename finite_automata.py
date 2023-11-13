@@ -24,6 +24,14 @@ class FiniteAutomaton:
                             break
                         transition = transition_line.strip().split()
                         current_state, symbol, next_state = transition
+                        if symbol not in self.alphabet or current_state not in self.states or next_state not in self.states:
+                            print(f"FA input file not correct, check alphabet, and transitions")
+                            self.states = set()
+                            self.alphabet = set()
+                            self.transitions = {}
+                            self.initial_state = None
+                            self.final_states = set()
+                            break
                         self.transitions[(current_state, symbol)] = next_state
 
     def display_elements(self):
