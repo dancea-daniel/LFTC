@@ -1,0 +1,9 @@
+file         ::= ("states" states)? ("alphabet" alphabet)? ("initial" initial)? ("final" final)? ("transitions" transitions)?
+states       ::= state (state)*
+alphabet     ::= symbol (symbol)*
+state        ::= [a-zA-Z0-9_]+
+symbol       ::= [a-zA-Z0-9_]+
+initial      ::= state
+final        ::= state
+transitions  ::= transition (transition)*
+transition   ::= state symbol state
